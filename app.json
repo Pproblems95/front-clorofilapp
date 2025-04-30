@@ -26,7 +26,14 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "expo-router"
+      "expo-router",
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Permite acceder a tu cámara",
+          "microphonePermission": "Permite acceder a tu micrófono"
+        }
+      ]
     ]
   }
 }

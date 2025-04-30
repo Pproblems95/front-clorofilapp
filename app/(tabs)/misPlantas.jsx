@@ -77,7 +77,7 @@ const misPlantas = () => {
             const stringItem = JSON.stringify(item)
 
             router.push({
-                pathname:'[id]',
+                pathname:'[idPlanta]',
                 params:{id: item.id.toString(), plantData: stringItem}
             })
         }}>

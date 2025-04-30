@@ -12,6 +12,14 @@ const _layout = () => {
         fontSize:30,
         color:'black'
       }, headerTitleAlign:'center'}}/>
+      <Tabs.Screen name='newPlant' options={{title: 'Nueva planta', headerShown:true, headerStyle:{backgroundColor:'#99CC66'}, headerTitleStyle:{
+        fontSize:30,
+        color:'black'
+      }, headerTitleAlign:'center'}}/>
+      <Tabs.Screen name='perfil' options={{title: 'Mi perfil', headerShown:true, headerStyle:{backgroundColor:'#99CC66'}, headerTitleStyle:{
+        fontSize:30,
+        color:'black'
+      }, headerTitleAlign:'center'}}/>
     </Tabs>
   )
 }

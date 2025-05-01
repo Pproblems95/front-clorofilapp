@@ -1,12 +1,35 @@
-import React, { useState, useRef } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Button, Image } from 'react-native';
+import React, { useState, useRef, useEffect } from 'react';
+import { StyleSheet, Text, View, TouchableOpacity, Button, Image, Pressable } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
+import { router } from 'expo-router';
 
 const NewPlant = () => {
+  
+
   const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions();
   const cameraRef = useRef(null);
   const [photo, setPhoto] = useState(null);
+  const [usePhotoTaken, SetUsePhotoTaken] = useState(false)
+
+  useEffect(() => {
+    console.log('me ejecuto')
+    if(photo===null){
+      console.log('photo null')
+      return
+    }
+    if(!usePhotoTaken){
+      console.log('usephototaken false')
+      return
+    }
+    const encoded = encodeURIComponent(photo)
+    router.push({pathname: 'infoNewPlant', params:{
+      photoTaken: encoded
+    }})
+  },[usePhotoTaken])
+  useEffect(() => {
+    SetUsePhotoTaken(false)
+  }, [])
 
   if (!permission) {
     return (
@@ -46,7 +69,26 @@ const NewPlant = () => {
       {photo ? (
         <View style={styles.previewContainer}>
           <Image source={{ uri: photo }} style={styles.previewImage} />
-          <Button title="Volver a la cámara" onPress={() => setPhoto(null)} />
+          <View className='flex-row '>
+          <Pressable
+      onPress={() => {
+        setPhoto(null);
+        SetUsePhotoTaken(false);
+      }}
+      className="bg-[#99CC66] px-5 py-2 rounded-lg mx-2 active:opacity-70"
+    >
+      <Text className="text-white font-medium text-center">Volver a la cámara</Text>
+    </Pressable>
+
+    {/* Botón "Usar esta foto" */}
+    <Pressable
+      onPress={() => SetUsePhotoTaken(true)}
+      className="bg-[#4CAF50] px-5 py-2 rounded-lg mx-2 active:opacity-70"
+    >
+      <Text className="text-white font-medium text-center">Usar esta foto</Text>
+    </Pressable>
+          </View>
+          
         </View>
       ) : (
         <CameraView 
@@ -92,7 +134,7 @@ const styles = StyleSheet.create({
   },
   captureButton: {
     padding: 15,
-    backgroundColor: 'rgba(255,0,0,0.7)',
+    backgroundColor: '#99CC66',
     borderRadius: 10,
   },
   text: {

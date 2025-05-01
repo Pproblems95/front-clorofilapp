@@ -5,7 +5,11 @@ import { Stack } from 'expo-router'
 const _layout = () => {
   return (
     <Stack>
-        <Stack.Screen name='[idPlanta]' options={{title:'Mis Plantas', headerShown:true, headerStyle:{backgroundColor:'#99CC66'}, headerTitleStyle:{
+        <Stack.Screen name='[idPlanta]' options={{title:'Detalles', headerShown:true, headerStyle:{backgroundColor:'#99CC66'}, headerTitleStyle:{
+        fontSize:30,
+        color:'black'
+      }, headerTitleAlign:'center'}}/>
+      <Stack.Screen name='infoNewPlant' options={{title:'Mis Plantas', headerShown:true, headerStyle:{backgroundColor:'#99CC66'}, headerTitleStyle:{
         fontSize:30,
         color:'black'
       }, headerTitleAlign:'center'}}/>

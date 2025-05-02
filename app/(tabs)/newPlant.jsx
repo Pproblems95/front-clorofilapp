@@ -13,6 +13,7 @@ const NewPlant = () => {
   const [usePhotoTaken, SetUsePhotoTaken] = useState(false)
 
   useEffect(() => {
+    console.log(usePhotoTaken)
     console.log('me ejecuto')
     if(photo===null){
       console.log('photo null')
@@ -80,13 +81,14 @@ const NewPlant = () => {
       <Text className="text-white font-medium text-center">Volver a la cámara</Text>
     </Pressable>
 
-    {/* Botón "Usar esta foto" */}
-    <Pressable
-      onPress={() => SetUsePhotoTaken(true)}
-      className="bg-[#4CAF50] px-5 py-2 rounded-lg mx-2 active:opacity-70"
-    >
-      <Text className="text-white font-medium text-center">Usar esta foto</Text>
-    </Pressable>
+    {!usePhotoTaken && (
+      <Pressable
+        onPress={() => SetUsePhotoTaken(true)}
+        className="bg-[#4CAF50] px-5 py-2 rounded-lg mx-2 active:opacity-70"
+      >
+        <Text className="text-white font-medium text-center">Usar esta foto</Text>
+      </Pressable>
+    )}
           </View>
           
         </View>

@@ -19,8 +19,6 @@ Con Clorofilapp, los usuarios pueden tomar una foto de una planta para recibir i
 - React Native con Expo
 - NativeWind (Tailwind CSS para React Native)
 - React Navigation
-- Context API para el manejo de estado global
-- TypeScript
 ---
 ## Estructura del proyecto
 
